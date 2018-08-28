@@ -4,10 +4,11 @@
 <p>Here is what your friends are saying:</p>
 
 <div>
-	<% @following_tweets.each do |tweet|%>
+	<% @following_tweets.sort {|x,y| y<=>x }.each do |tweet|%>
 	<div>
 		<p>@<%= link_to tweet.user.username, show_user_path(id: tweet.user.id)%></p>
 		<!-- html_safe allows people to use HTML tags within tweet, and lets us make links out of tags put in there. Also we can make links clickable. -->
+		&bull; <%= time_ago_in_words(tweet.created_at)%>
 		<p><%= tweet.message.html_safe%></p>
 	</div>
 	<%end%>

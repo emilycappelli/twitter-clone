@@ -2,6 +2,8 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 # make sure user is signed in before tweeting
   before_action :authenticate_user!
+
+  include TweetsHelper
   # GET /tweets
   # GET /tweets.json
   def index
@@ -25,7 +27,37 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = Tweet.create(tweet_params)
+    # need to associate to helper file - after before action
+    @tweet = get_tagged(@tweet)
+    # *********removing all this stuff and moving it to tweets helper file to keep 'fat model skinny controller'
+
+
+    # # create temporary array that splits the message into a string temporarily
+
+    # message_arr = @tweet.message.split
+
+    # message_arr.each do |word, index|
+    #   if word[0] == "#"
+    #     # checking the phrase column of the tag table .pluck makes the phrases an array and include checks for that tag
+    #     if Tag.pluck(:phrase).include?(word.downcase)
+    #       # save that tag as a variable to use in TweetTag creation
+    #       tag = Tag.find_by(phrase: word.downcase)
+    #     else
+    #       # create a new instance of Tag
+    #       tag = Tag.create(phrase: word.downcase)
+    #     end
+    #     # create new instance of tweet_tag
+    #     tweet_tag = TweetTag.create(tweet_id: @tweet.id, tag_id: tag.id)
+
+    #     # replace the tweet with the link instance of itself
+    #     # at this index of this word that I'm iterating over, set it equal to an anchor tag
+    #     message_arr[index] = "<a href='/tag_tweets?id=#{tag.id}'>#{word}</a>"
+    #   end
+    # end
+
+    # # put the split array back together. join with spaces. 
+    # @tweet.update(message: message_arr.join(" "))
 
     respond_to do |format|
       if @tweet.save
@@ -70,6 +102,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:message, :user_id)
+      params.require(:tweet).permit(:message, :user_id, :link)
     end
 end
