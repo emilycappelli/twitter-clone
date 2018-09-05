@@ -62,7 +62,7 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  end
+end 
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -70,6 +70,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
