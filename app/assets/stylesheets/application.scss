@@ -105,3 +105,185 @@ button {
     border: 0;
     cursor: pointer;
 }
+
+*{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+/*  background-color: rgb(230, 236, 240);*/
+}
+
+.navbar-default {
+    background-color: white;
+    height: 50px;
+}
+
+li .navbar-nav {
+    font-size: 13px;
+    font-style:bold;
+}
+.btn-tweet {
+    border-radius: 500px;
+    background-color: #1da1f2;
+    border: 1px solid #1da1f2;
+    color: #fff;
+    margin-top: 7px;
+    height: 35px;
+    font-family: helvetica;
+    font-size: 1.5rem;
+    align-content: center
+}
+
+.search-twitter {
+    border-radius: 500px;
+    margin-top:0px;
+
+}
+    
+.jumbotron {
+    background-image: url(
+        "https://media.architecturaldigest.com/photos/584b1883a89ebf6d04302063/master/pass/greenery-home-products-pantone-2017_08.jpg");
+    background-size: cover;
+    height:250px;   
+    margin:0;
+    border:0;
+    border-radius:0;
+    width:100%;
+    
+}
+
+.edit-profile {
+    margin: 10px;
+    border-radius: 500px;
+    color: #66757f;
+    border: 1px solid #66757f;
+}
+
+.user-image {
+    position:relative;
+    top: -100px;
+    left: 50px;
+    border-radius: 500px;
+    border: 5px solid #fff;
+
+}
+
+.not-links {
+    text-decoration:none;
+}
+
+ul {
+    text-decoration:none;
+    display: inline;
+}
+
+.numbers li{
+    text-decoration:none;
+    display: inline-block;
+    text-align: center;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    background-color:#fff;
+    border-bottom: 2px solid #1DA1F2;
+    height: 50px;
+}
+
+.navbar-default .navbar-nav>.open>a {
+    background-color: #fff;
+
+
+}
+
+.notification {
+    position: relative;
+    bottom: 5px;
+}
+
+.twitter-bird {
+    position: relative;
+    bottom: 5px;
+}
+
+a.dropdown-toggle:active {
+    background-color:#fff;
+}
+
+.header-title {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    color:#657786;
+    padding-top:3px;
+}
+
+.header-number {
+    color: #66757f;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 3px;
+    text-align: center!important;
+}
+
+#top-bar {
+    border-bottom: .2px solid #66757f;
+    height:70px;
+    width: 100%;
+    background-color: #fff;
+}
+
+/*.give-spaxe {
+    height: 10px;
+}*/
+
+.content {
+    background-color: rgb(230, 236, 240);
+}
+
+.panel-default {
+    background-color: rgb(230, 236, 240);
+    border-color:rgb(230, 236, 240);
+}
+
+p.details {
+    color:#66757f;
+    }
+
+.who-follow {
+    background-color:white;
+}
+
+span{
+    font-size:10px;
+    color: #1da1f2;
+}
+
+h4 {
+    position: relative;
+    left: 50px;
+    top: -40px;
+}
+
+.tweet-details {
+    position: relative;
+    left: 175px;
+    top: -70px;
+}
+
+.tweet-text{
+    font-size: 2.3rem;
+    position: relative;
+    left: 50px;
+    top: -75px;
+}
+
+.hashtag {
+    font-size: 2.3rem;
+    color:#1da1f2;
+    position: relative;
+    left: 50px;
+    top: -80px;
+}
+.panel-tweet {
+    background-color: white;
+    text-align: justify;
+    height: 200px;
+}

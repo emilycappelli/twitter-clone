@@ -1,15 +1,157 @@
-<% if current_user%>
-<h1>@<%= current_user.username%>'s Twitter Feed</h1>
-<%end%>
-<p>Here is what your friends are saying:</p>
-
-<div>
-	<% @following_tweets.sort {|x,y| y<=>x }.each do |tweet|%>
-	<div>
-		<p>@<%= link_to tweet.user.username, show_user_path(id: tweet.user.id)%></p>
-		<!-- html_safe allows people to use HTML tags within tweet, and lets us make links out of tags put in there. Also we can make links clickable. -->
-		&bull; <%= time_ago_in_words(tweet.created_at)%>
-		<p><%= tweet.message.html_safe%></p>
+	<div class="container-fluid">
+		<div class="jumbotron">
+		</div>
 	</div>
-	<%end%>
+
+<!-- bar with pic and follower stats -->
+	<div class="container-fluid" id="top-bar">
+	  <div class="row">
+		  	<div class="col-sm-3">
+		  		<% if current_user.avatar.blank? == false %>
+                                <%= image_tag current_user.avatar.url, width: 200, class: "img-circle img-responsive user-image" %>
+                            <% end %>
+		  	</div>
+	  		
+	  		<div class="col-sm-3 numbers">
+		  		<ul>
+			  		<li>
+			  			<a class= "not links" href="#">
+			  			<div class="col-sm-3">
+				  			<p class="header-title">Following</p>
+				  			<p class="header-number"><%= link_to "51", following_path(id: current_user.id)%></p>
+				  		</div>
+				  		</a>
+			  		</li>
+
+			  		<li>
+				  		<a class= "not links" href="#">
+				  		<div class="col-sm-3">
+				  			<p class="header-title">Likes</p>
+				  			<p class="header-number">2</p>	  		
+				  		</div>
+				  		</a>
+			  		</li>
+
+			  		<li>
+			  			<a class= "not links" href="#">
+			  			<div class="col-sm-3 not-links">
+				  			<p class="header-title">Lists</p>
+				  			<p class="header-number">0</p>	  		
+				  		</div>
+				  		</a>
+				  	</li>
+
+				  	<li>
+				  		<a class= "not links" href="#">
+				  		<div class="col-sm-3">
+				  			<p class="header-title">Moments</p>
+				  			<p class="header-number">0</p>	  		
+				  		</div>
+				  		</a>
+			  		</li>
+		  		</ul>
+	  		</div>
+	  		<div class="col-sm-6">
+	  			<button class="btn btn-default pull-right edit-profile"><%= link_to "Edit Profile", edit_user_registration_path%></button>
+	  		</div>
+	  </div>
+	</div>
+	
+	  
+
+
+	<!-- ALIGNMENT DIDN"T WORK FOR THIS - look into why -->
+<!-- 	   <div class="row">
+		  	<div class="col-md-3">
+  			  	<div class="panel-body">
+    				<h2>Emily Cappelli</h2>
+    				<p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Joined December 2017</p>
+				</div>		  
+	  		</div>
+	  		<div class="col-md-6">
+	  			<div class="panel-body">
+	  				<h2>Send your first Tweet</h2>
+	  				<p>We've got your first Tweet ready to go. The hashtag #myfirstTweet will help others find and chat with you.</p>
+	  			</div>
+  			</div>
+	  			<!-- more stuff here -->
+<!-- 	  		<div class="col-md-3">
+  			  	<div class="panel-body">
+    				Basic panel example
+				</div>
+	  		</div>
+
+	  	</div> -->
+
+<div class="container-fluid content">
+<div class="container"></div>
+
+<!-- Test again - 3 columns -->
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-sm-3">
+	  	<div class="panel panel-default">
+		  <div class="panel-body Center">
+		    <h3>Emily Cappelli</h3>
+			<p class="details"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Joined December 2017</p>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-sm-6">
+	  	<div class="panel panel-default">
+		  	<div class="panel-body">
+	  		<% if current_user%>
+					<h3>@<%= current_user.username%>'s Twitter Feed</h3>
+				<%end%>
+				<p class="details">Here is what your friends are saying:</p>
+
+				
+					<% @following_tweets.sort {|x,y| y<=>x }.each do |tweet|%>
+					<div class="row">
+					<div class="panel panel-default panel-tweet">
+						<p>@<%= link_to tweet.user.username, show_user_path(id: tweet.user.id)%></p>
+						<!-- html_safe allows people to use HTML tags within tweet, and lets us make links out of tags put in there. Also we can make links clickable. -->
+						&bull; <%= time_ago_in_words(tweet.created_at)%>
+						<p><%= tweet.message.html_safe%></p>
+					</div>
+					<%end%>
+				</div>
+
+				
+				<div class="row">
+					
+						<div class="panel panel-default panel-tweet">
+							<div class="panel-body"><span><img src="assets/images/emily_user.png" class="img-circle" width=40px></span> 
+							<h4>Emily Cappelli</h4><p class="tweet-details">@EmilyCappelli</p>
+							<p class="tweet-text">Just setting up my Twitter</p><p class="hashtag">#</p>
+							</div>
+						</div>
+						</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn btn-default btn-lg btn-tweet">Tweet</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	  </div>
+	  <div class="col-sm-3">
+	  	<div class="panel panel-default who-follow">
+		  	<div class="panel-body">
+				<h3>Who to follow<span><a href="#" class="links"></a>Refresh * </span><span><a href="#"></a>View 	all</span></h3>
+			</div>
+		</div>
+	  </div>
+	</div>
+</div>  	
 </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
